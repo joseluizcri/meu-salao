@@ -1,4 +1,4 @@
-package br.com.atualizesistemas.meusalao.MeuSalao.models.comanda;
+package br.com.atualizesistemas.meusalao.MeuSalao.models;
 
 import java.math.BigDecimal;
 

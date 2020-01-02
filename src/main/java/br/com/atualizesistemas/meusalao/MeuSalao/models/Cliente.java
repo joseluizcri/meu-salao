@@ -40,4 +40,12 @@ public class Cliente implements Pessoa, Serializable {
     public List<Telefone> getTelefones() {
         return this.telefones;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
