@@ -1,7 +1,5 @@
 package br.com.atualizesistemas.meusalao.MeuSalao.models;
 
-import br.com.atualizesistemas.meusalao.MeuSalao.models.comanda.ItemDeVenda;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
