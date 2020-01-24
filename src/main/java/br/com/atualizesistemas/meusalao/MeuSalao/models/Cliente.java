@@ -15,15 +15,19 @@ public class Cliente implements Pessoa, Serializable {
 
     private String nome;
 
-    @OneToMany
-    @JoinColumn(name = "I_PESSOAS")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name="CLIENTES_ENDERECOS", joinColumns=
+            {@JoinColumn(name="I_CLIENTES")}, inverseJoinColumns=
+            {@JoinColumn(name="I_ENDERECOS")})
     private List<Endereco> enderecos;
 
-    @OneToMany
-    @JoinColumn(name = "I_PESSOAS")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name="CLIENTES_TELEFONES", joinColumns=
+            {@JoinColumn(name="I_CLIENTES")}, inverseJoinColumns=
+            {@JoinColumn(name="I_TELEFONES")})
     private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos;
 
     @Override

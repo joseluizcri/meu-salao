@@ -22,9 +22,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> getCliente() {
-        Cliente cliente = new Cliente();
-        cliente.setId(1L);
+    public ResponseEntity<Cliente> getCliente(@RequestBody Cliente cliente) {
         cliente = clienteService.insert(cliente);
         return ResponseEntity.ok().body(cliente);
     }
