@@ -11,11 +11,17 @@ public class Profissional implements Pessoa, Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
-    @OneToMany
-    @JoinColumn(name = "I_PESSOAS")
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name="PROFISSIONAIS_ENDERECOS", joinColumns=
+            {@JoinColumn(name="I_PROFISSIONAIS")}, inverseJoinColumns=
+            {@JoinColumn(name="I_ENDERECOS")})
     private List<Endereco> enderecos;
-    @OneToMany
-    @JoinColumn(name = "I_PESSOAS")
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name="PROFISSIONAIS_TELEFONES", joinColumns=
+            {@JoinColumn(name="I_PROFISSIONAIS")}, inverseJoinColumns=
+            {@JoinColumn(name="I_TELEFONES")})
     private List<Telefone> telefones;
 
     @Override
