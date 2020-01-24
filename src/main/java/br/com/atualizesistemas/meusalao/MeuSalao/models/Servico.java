@@ -1,17 +1,15 @@
 package br.com.atualizesistemas.meusalao.MeuSalao.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
+@SequenceGenerator(name = "SEQ_SERVICOS", allocationSize = 1, sequenceName = "SEQ_SERVICOS")
 public class Servico implements ItemDeVenda, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_SERVICOS", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descricao;
     private BigDecimal valorCusto;

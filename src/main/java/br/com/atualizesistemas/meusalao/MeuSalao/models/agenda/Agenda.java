@@ -7,10 +7,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@SequenceGenerator(name = "SEQ_AGENDA", allocationSize = 1, sequenceName = "SEQ_AGENDA")
 public class Agenda implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_AGENDA", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descricao;
     private Profissional profissional;

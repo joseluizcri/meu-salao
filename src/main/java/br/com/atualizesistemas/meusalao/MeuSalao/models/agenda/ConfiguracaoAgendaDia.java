@@ -6,10 +6,11 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
 @Entity
+@SequenceGenerator(name = "SEQ_CONF_AGENDA_DIA", allocationSize = 1, sequenceName = "SEQ_CONF_AGENDA_DIA")
 public class ConfiguracaoAgendaDia implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_CONF_AGENDA_DIA", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descricao;
     private DayOfWeek dayOfWeek;

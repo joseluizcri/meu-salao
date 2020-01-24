@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@SequenceGenerator(name = "SEQ_TELEFONES", allocationSize = 1, sequenceName = "SEQ_TELEFONES")
 public class Telefone  implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_TELEFONES", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descricao;
     private String ddd;

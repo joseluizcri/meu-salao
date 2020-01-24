@@ -8,10 +8,11 @@ import java.sql.Time;
 import java.time.LocalDate;
 
 @Entity
+@SequenceGenerator(name = "SEQ_AGENDAMENTO", allocationSize = 1, sequenceName = "SEQ_AGENDAMENTO")
 public class Agendamento implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_AGENDAMENTO", strategy = GenerationType.SEQUENCE)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "I_AGENDAS")

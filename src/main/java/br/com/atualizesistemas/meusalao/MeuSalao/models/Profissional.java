@@ -5,10 +5,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@SequenceGenerator(name = "SEQ_PROFISSIONAIS", allocationSize = 1, sequenceName = "SEQ_PROFISSIONAIS")
 public class Profissional implements Pessoa, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_PROFISSIONAIS", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
 

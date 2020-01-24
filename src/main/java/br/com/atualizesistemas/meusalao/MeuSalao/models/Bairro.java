@@ -1,16 +1,14 @@
 package br.com.atualizesistemas.meusalao.MeuSalao.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@SequenceGenerator(name = "SEQ_BAIRROS", allocationSize = 1, sequenceName = "SEQ_BAIRROS")
 public class Bairro implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_BAIRROS", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
 

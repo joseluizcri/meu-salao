@@ -7,10 +7,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@SequenceGenerator(name = "SEQ_CLIENTES", allocationSize = 1, sequenceName = "SEQ_CLIENTES")
 public class Cliente implements Pessoa, Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_CLIENTES", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String nome;
