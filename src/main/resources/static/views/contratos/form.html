@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h1 class="h2">{{vm. titulo}}</h1>
+</div>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Situação contato</label>
+            <select ng-model="vm.contrato.ativo" class="form-control" ng-options="vm.boolToStr(item) for item in [true, false]"></select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Numero</label>
+            <input ng-class="{ 'is-invalid': vm.errors.numero }" ng-model="vm.contrato.numero" type="text" class="form-control">
+            <div ng-if="vm.errors.numero" class="invalid-feedback">{{vm.errors.numero[1]}}</div>
+        </div>
+        <div class="form-group col-md-8">
+            <label>Cliente</label>
+            <select ng-class="{'is-invalid': vm.error.cliente}" ng-options="item as item.nome for item in vm.clientes track by item.id"
+                ng-model="vm.contrato.cliente" class="form-control">
+            </select>
+            <div ng-if="vm.errors.cliente" class="invalid-feedback">{{vm.errors.cliente[1]}}</div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Data início</label>
+            <input ng-class="{ 'is-invalid': vm.errors.dataInicio }" ng-model="vm.contrato.dataInicio" type="date" class="form-control">
+            <div ng-if="vm.errors.dataInicio" class="invalid-feedback">{{vm.errors.dataInicio[1]}}</div>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Data fim</label>
+            <input ng-class="{ 'is-invalid': vm.errors.dataFim }" ng-model="vm.contrato.dataFim" type="date" class="form-control">
+            <div ng-if="vm.errors.dataFim" class="invalid-feedback">{{vm.errors.dataFim[1]}}</div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Equipamento</label>
+            <select ng-options="item as (item.fabricante.nome+' - '+item.modelo) for item in vm.equipamentos track by item.id"
+                ng-model="vm.equipamentoContrato.equipamento" class="form-control">
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Quantidade</label>
+            <input ng-model="vm.equipamentoContrato.quantidade" type="number" ng-change="vm.calcularValorTotal()" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Valor unitário</label>
+            <input ng-model="vm.equipamentoContrato.valorUnitario" ng-change="vm.calcularValorTotal()" type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Valor Total</label>
+            <input ng-model="vm.equipamentoContrato.valorTotal" disabled type="number" class="form-control">
+        </div>
+    </div>
+    <button ng-click="vm.addEquipamentoContrato()" type="button" class="btn btn-primary">Adicionar item</button>
+    
+    <div class="table-responsive mt-2">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Equipamento</th>
+                    <th>Quantidade</th>
+                    <th>Valor unitário</th>
+                    <th>Valor total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.contrato.equipamentosContrato">
+                    <td>{{item.equipamento.fabricante.nome + ' - ' + item.equipamento.modelo}}</td>
+                    <td>{{item.quantidade}}</td>
+                    <td>{{item.valorUnitario | currency:'R$ '}}</td>
+                    <td>{{item.valorTotal | currency:'R$ '}}</td>
+                    <td class="text-right">
+                        <button ng-click="vm.editarEquipamentoContrato(item)" class="btn p-0 btn-sm btn-link">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button ng-click="vm.removerEquipamentoContrato(item)" class="btn p-0 btn-sm btn-link" type="button">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-right font-weight-bold">Total: {{vm.contrato.valorTotal | currency:'R$ '}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="vm.errors.equipamento" class="alert alert-danger alert-dismissible fade show" role="alert">{{vm.errors.equipamento[1]}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div ng-if="vm.errors.quantidade" class="alert alert-danger alert-dismissible fade show" role="alert">{{vm.errors.quantidade[1]}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div ng-if="vm.errors.valorUnitario" class="alert alert-danger alert-dismissible fade show" role="alert">{{vm.errors.valorUnitario[1]}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div ng-if="vm.errors.valorTotal" class="alert alert-danger alert-dismissible fade show" role="alert">{{vm.errors.valorTotal[1]}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="mb-2 text-lg-right">
+        <button ng-click="vm.save()" type="button" class="btn btn-success">Salvar</button>
+        <button ui-sref="contratos" type="button" class="btn btn-outline-danger">Cancelar</button>
+    </div>
+</form>

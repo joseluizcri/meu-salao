@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="outsourcing" lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Gerenciamento de contratos de locações</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Gerencimento de contratos</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sair</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="dashboard" ui-sref-active="active">
+                  <span class="fa fa-home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="contratos" ui-sref-active="active">
+                  <span class="fa fa-file-alt"></span>
+                  Contratos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="clientes" ui-sref-active="active">
+                  <span class="fa fa-users"></span>
+                  Clientes
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" h ui-sref="equipamentos" ui-sref-active="active">
+                  <span class="fa fa-print"></span>
+                  Equipamentos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="fabricantes" ui-sref-active="active">
+                  <span class="fa fa-building"></span>
+                  Fabricantes
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <ui-view></ui-view>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+
+    <!-- Script e dependencias do AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.20.1/dist/sweetalert2.all.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/dialog.builder.service.js"></script>
+    <!--CLIENTES-->
+    <script src="js/clientes/list.controller.js"></script>
+    <script src="js/clientes/form.controller.js"></script>
+    <script src="js/clientes/service.js"></script>
+    <!--FABRICANTES-->
+    <script src="js/fabricantes/list.controller.js"></script>
+    <script src="js/fabricantes/form.controller.js"></script>
+    <script src="js/fabricantes/service.js"></script>
+    <!--EQUIPAMENTOS-->
+    <script src="js/equipamentos/list.controller.js"></script>
+    <script src="js/equipamentos/form.controller.js"></script>
+    <script src="js/equipamentos/service.js"></script>
+    <!--CONTRATOS-->
+    <script src="js/contratos/list.controller.js"></script>
+    <script src="js/contratos/form.controller.js"></script>
+    <script src="js/contratos/service.js"></script>
+  </body>
+</html>
